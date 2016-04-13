@@ -29,8 +29,22 @@ shadowJar {
     transform(ServiceFileTransformer)
     classifier = ''
 }
-
 apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
+shadowJar {
+    baseName = 'dagger'
+    classifier = ''
+}
+
+publishing {
+    publications {
+        shadow(MavenPublication) {
+            from components.shadow
+            artifactId = 'dagger'
+        }
+    }
+}
 
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
