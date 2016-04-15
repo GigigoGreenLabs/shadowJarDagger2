@@ -27,7 +27,7 @@ shadowJar {
     relocate 'dagger.producers', 'orchextra.dagger.producers'
 
     transform(ServiceFileTransformer)
-    baseName = 'dagger-compiler'
+    baseName = 'dagger-compiler-all'
     classifier = ''
 }
 apply plugin: 'maven'
@@ -49,7 +49,7 @@ publishing {
     publications {
         shadow(MavenPublication) {
             from components.shadow
-            artifactId = 'dagger-compiler'
+            artifactId = 'dagger-compiler-all'
         }
     }
 }
