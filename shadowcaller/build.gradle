@@ -16,10 +16,11 @@ artifacts {
     }
 }
 
+apply plugin: 'maven'
 
 dependencies {
-    shadow project(path: ':dagger-compiler', transitive: false)
-    shadow project(path: ':dagger', transitive: false)
+    shadow project(path: ':dagger-compiler')
+    shadow project(path: ':dagger')
 }
 
 
