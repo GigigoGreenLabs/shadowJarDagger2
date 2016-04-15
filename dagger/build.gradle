@@ -27,7 +27,7 @@ shadowJar {
     relocate 'dagger.Provides$Type', 'orchextra.dagger.Provides$Type'
     relocate 'dagger.internal', 'orchextra.dagger.internal'
     relocate 'dagger.producers', 'orchextra.dagger.producers'
-    baseName = 'dagger'
+    baseName = 'dagger-shadow'
     classifier = ''
 }
 
@@ -38,7 +38,7 @@ publishing {
     publications {
         shadow(MavenPublication) {
             from components.shadow
-            artifactId = 'dagger'
+            artifactId = 'dagger-shadow'
         }
     }
 }
@@ -54,7 +54,7 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 artifacts {
-    archives shadowJar
+//    archives shadowJar
     archives sourcesJar
     archives javadocJar
 }
