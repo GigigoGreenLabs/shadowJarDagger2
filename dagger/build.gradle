@@ -26,37 +26,45 @@ shadowJar {
     relocate 'dagger.Provides$Type', 'orchextra.dagger.Provides$Type'
     relocate 'dagger.internal', 'orchextra.dagger.internal'
     relocate 'dagger.producers', 'orchextra.dagger.producers'
-    baseName = 'dagger-all'
+    baseName = 'dagger'
     classifier = ''
 }
 
 apply plugin: 'maven'
-apply plugin: 'maven-publish'
+//apply plugin: 'maven-publish'
 
-publishing {
-    publications {
-        shadow(MavenPublication) {
-            from components.shadow
-            artifactId = 'dagger-all'
-        }
-    }
-}
+//publishing {
+//    publications {
+//        shadow(MavenPublication) {
+//            from components.shadow
+//            artifactId = 'dagger-all'
+//        }
+//    }
+//}
 
 //task sourcesJar(type: Jar, dependsOn: classes) {
 //    classifier = 'sources'
 //    from sourceSets.main.allSource
 //}
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
 
-artifacts {
-    shadow(tasks.shadowJar.archivePath) {
-        builtBy shadowJar
+uploadShadow {
+    repositories {
+        mavenDeployer {
+            //configure maven deployment
+        }
     }
-
-//    archives sourcesJar
-    archives javadocJar
 }
+
+//artifacts {
+////    shadow(tasks.shadowJar.archivePath) {
+////        builtBy shadowJar
+////    }
+//
+////    archives sourcesJar
+//    archives javadocJar
+//}
