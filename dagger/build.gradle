@@ -27,16 +27,12 @@ shadowJar {
     relocate 'dagger.Provides$Type', 'orchextra.dagger.Provides$Type'
     relocate 'dagger.internal', 'orchextra.dagger.internal'
     relocate 'dagger.producers', 'orchextra.dagger.producers'
+    baseName = 'dagger'
     classifier = ''
 }
 
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
-
-shadowJar {
-    baseName = 'dagger'
-    classifier = ''
-}
 
 publishing {
     publications {
@@ -58,6 +54,7 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 artifacts {
+    archives shadowJar
     archives sourcesJar
     archives javadocJar
 }
