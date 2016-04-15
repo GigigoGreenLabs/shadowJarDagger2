@@ -1,1 +1,1 @@
-include ':dagger', ':dagger-compiler', ':testmodule', ':shadowcaller'
+include ':dagger', ':dagger-compiler'
