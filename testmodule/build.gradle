@@ -10,10 +10,11 @@ buildscript {
   }
 }
 
-
 apply plugin: 'com.android.library'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.github.dcendents.android-maven'
+
+group='com.github.GigigoGreenLabs'
 
 android {
   compileSdkVersion 21
