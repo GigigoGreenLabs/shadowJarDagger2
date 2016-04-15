@@ -10,10 +10,11 @@ configurations {
 }
 
 artifacts {
-    archives(shadowJar.archivePath) {
-        classifier 'shadow'
-        builtBy shadowJar
-    }
+    shadow shadowJar.archivePath
+//    archives(shadowJar.archivePath) {
+//        classifier 'shadow'
+//        builtBy shadowJar
+//    }
 }
 
 apply plugin: 'maven'
