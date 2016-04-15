@@ -10,7 +10,6 @@ apply plugin: 'com.github.johnrengelman.shadow'
 
 dependencies {
     compile 'com.google.dagger:dagger:2.2'
-
 }
 
 shadowJar {
@@ -27,7 +26,7 @@ shadowJar {
     relocate 'dagger.Provides$Type', 'orchextra.dagger.Provides$Type'
     relocate 'dagger.internal', 'orchextra.dagger.internal'
     relocate 'dagger.producers', 'orchextra.dagger.producers'
-    baseName = 'dagger-shadow'
+    baseName = 'dagger'
     classifier = ''
 }
 
@@ -38,7 +37,7 @@ publishing {
     publications {
         shadow(MavenPublication) {
             from components.shadow
-            artifactId = 'dagger-shadow'
+            artifactId = 'dagger'
         }
     }
 }
@@ -54,7 +53,10 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 artifacts {
-//    archives shadowJar
+    shadow(tasks.shadowJar.archivePath) {
+        builtBy shadowJar
+    }
+
     archives sourcesJar
     archives javadocJar
 }

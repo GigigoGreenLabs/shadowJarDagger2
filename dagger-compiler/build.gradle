@@ -27,17 +27,29 @@ shadowJar {
     relocate 'dagger.producers', 'orchextra.dagger.producers'
 
     transform(ServiceFileTransformer)
-    baseName = 'dagger-compiler-shadow'
+    baseName = 'dagger-compiler'
     classifier = ''
 }
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 
+
+//configurations {
+//    shadow
+//}
+//
+//artifacts {
+//    archives(shadowJar.archivePath) {
+//        classifier 'shadow'
+//        builtBy shadowJar
+//    }
+//}
+
 publishing {
     publications {
         shadow(MavenPublication) {
             from components.shadow
-            artifactId = 'dagger-compiler-shadow'
+            artifactId = 'dagger-compiler'
         }
     }
 }
@@ -53,7 +65,11 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 artifacts {
-//    archives shadowJar
+
+    shadow(tasks.shadowJar.archivePath) {
+        builtBy shadowJar
+    }
+
     archives sourcesJar
     archives javadocJar
 }
