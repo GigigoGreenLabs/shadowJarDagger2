@@ -33,6 +33,18 @@ shadowJar {
 apply plugin: 'maven'
 //apply plugin: 'maven-publish'
 
+
+//install {
+//    repositories.mavenInstaller {
+//        shadow(MavenPublication) {
+//                        from components.shadow
+//                        artifactId = 'dagger'
+//                    }
+//    }
+//}
+
+[build, install]*.dependsOn shadowJar
+
 //publishing {
 //    publications {
 //        shadow(MavenPublication) {
@@ -52,13 +64,13 @@ apply plugin: 'maven'
 //    from javadoc.destinationDir
 //}
 
-uploadShadow {
-    repositories {
-        mavenDeployer {
-            //configure maven deployment
-        }
-    }
-}
+//uploadShadow {
+//    repositories {
+//        mavenDeployer {
+//            //configure maven deployment
+//        }
+//    }
+//}
 
 //artifacts {
 ////    shadow(tasks.shadowJar.archivePath) {

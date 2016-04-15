@@ -34,6 +34,14 @@ apply plugin: 'maven'
 //apply plugin: 'maven-publish'
 
 
+//install {
+//    repositories.mavenInstaller {
+//
+//    }
+//}
+
+[build, install]*.dependsOn shadowJar
+
 //configurations {
 //    shadow
 //}
@@ -45,13 +53,13 @@ apply plugin: 'maven'
 //    }
 //}
 
-uploadShadow {
-    repositories {
-        mavenDeployer {
-            //configure maven deployment
-        }
-    }
-}
+//uploadShadow {
+//    repositories {
+//        mavenDeployer {
+//            //configure maven deployment
+//        }
+//    }
+//}
 
 //publishing {
 //    publications {
