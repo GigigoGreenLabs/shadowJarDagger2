@@ -30,7 +30,7 @@ shadowJar {
     baseName = 'dagger-compiler'
     classifier = ''
 }
-apply plugin: 'maven'
+//apply plugin: 'maven'
 apply plugin: 'maven-publish'
 
 
@@ -59,17 +59,17 @@ publishing {
 //    from sourceSets.main.allSource
 //}
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-
-    shadow(tasks.shadowJar.archivePath) {
-        builtBy shadowJar
-    }
-
-//    archives sourcesJar
-    archives javadocJar
-}
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
+//
+//artifacts {
+//
+//    shadow(tasks.shadowJar.archivePath) {
+//        builtBy shadowJar
+//    }
+//
+////    archives sourcesJar
+//    archives javadocJar
+//}
