@@ -13,6 +13,10 @@ dependencies {
 }
 
 shadowJar {
+
+    exclude 'META-INF/maven/com.google.dagger/dagger/pom.properties'
+    exclude 'META-INF/maven/com.google.dagger/dagger/pom.xml'
+    
     relocate 'javax.inject', 'orchextra.javax.inject'
     relocate 'dagger', 'orchextra.dagger'
 
@@ -20,9 +24,9 @@ shadowJar {
     classifier = ''
 }
 
-apply plugin: 'maven'
+tasks.jar.enabled = false
 
-group = 'com.orchextra.dagger'
+apply plugin: 'maven'
 
 //THIS WAS THE KEY::
 [build, install]*.dependsOn shadowJar
