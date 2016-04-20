@@ -22,6 +22,8 @@ shadowJar {
 
 apply plugin: 'maven'
 
+group = 'com.orchextra.dagger'
+
 //THIS WAS THE KEY::
 [build, install]*.dependsOn shadowJar
 
