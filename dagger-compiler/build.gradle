@@ -12,44 +12,17 @@ dependencies {
 import com.github.jengelman.gradle.plugins.shadow.transformers.ServiceFileTransformer
 
 shadowJar {
-    relocate 'javax.inject.Inject', 'orchextra.javax.inject.Inject'
-    relocate 'javax.inject.Named', 'orchextra.javax.inject.Named'
-    relocate 'javax.inject.Provider', 'orchextra.javax.inject.Provider'
-    relocate 'javax.inject.Qualifier', 'orchextra.javax.inject.Qualifier'
-    relocate 'javax.inject.Scope', 'orchextra.javax.inject.Scope'
-    relocate 'javax.inject.Singleton', 'orchextra.javax.inject.Singleton'
-    relocate 'dagger.mapkeys.StringKey', 'orchextra.dagger.mapkeys.StringKey'
-    relocate 'dagger.multibindings.ClassKey', 'orchextra.dagger.multibindings.ClassKey'
-    relocate 'dagger.multibindings.ClassKey', 'orchextra.dagger.multibindings.IntKey'
-    relocate 'dagger.multibindings.ClassKey', 'orchextra.dagger.multibindings.LongKey'
-    relocate 'dagger.multibindings.ClassKey', 'orchextra.dagger.multibindings.StringKey'
-    relocate 'dagger.Component', 'orchextra.dagger.Component'
-    relocate 'dagger.MapKey', 'orchextra.dagger.MapKey'
-    relocate 'dagger.Multibindings', 'orchextra.dagger.Multibindings'
-    relocate 'dagger.Subcomponent', 'orchextra.dagger.Subcomponent'
-    relocate 'dagger.Lazy', 'orchextra.dagger.Lazy'
-    relocate 'dagger.MembersInjector', 'orchextra.dagger.MembersInjector'
-    relocate 'dagger.Module', 'orchextra.dagger.Module'
-    relocate 'dagger.Provides', 'orchextra.dagger.Provides'
-    relocate 'dagger.Provides$Type', 'orchextra.dagger.Provides$Type'
-    relocate 'dagger.internal', 'orchextra.dagger.internal'
-    relocate 'dagger.producers', 'orchextra.dagger.producers'
+    relocate 'javax.inject', 'orchextra.javax.inject'
+    relocate 'dagger', 'orchextra.dagger'
 
     transform(ServiceFileTransformer)
     baseName = 'dagger-compiler'
     classifier = ''
 }
 
+tasks.jar.enabled = false
+
 apply plugin: 'maven'
 
 //THIS WAS THE KEY::
 [build, install]*.dependsOn shadowJar
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives javadocJar
-}
