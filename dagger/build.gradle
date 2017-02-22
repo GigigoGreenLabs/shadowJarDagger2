@@ -9,37 +9,24 @@ apply plugin: 'java'
 apply plugin: 'com.github.johnrengelman.shadow'
 
 dependencies {
-    compile 'com.google.dagger:dagger:2.5'
+    compile 'com.google.dagger:dagger:2.9'
 }
 
 shadowJar {
-    relocate 'javax.inject.Inject', 'orchextra.javax.inject.Inject'
-    relocate 'javax.inject.Named', 'orchextra.javax.inject.Named'
-    relocate 'javax.inject.Provider', 'orchextra.javax.inject.Provider'
-    relocate 'javax.inject.Qualifier', 'orchextra.javax.inject.Qualifier'
-    relocate 'javax.inject.Scope', 'orchextra.javax.inject.Scope'
-    relocate 'javax.inject.Singleton', 'orchextra.javax.inject.Singleton'
-    relocate 'dagger.Lazy', 'orchextra.dagger.Lazy'
-    relocate 'dagger.MembersInjector', 'orchextra.dagger.MembersInjector'
-    relocate 'dagger.Module', 'orchextra.dagger.Module'
-    relocate 'dagger.Provides', 'orchextra.dagger.Provides'
-    relocate 'dagger.Provides$Type', 'orchextra.dagger.Provides$Type'
-    relocate 'dagger.internal', 'orchextra.dagger.internal'
-    relocate 'dagger.producers', 'orchextra.dagger.producers'
+
+    exclude 'META-INF/maven/com.google.dagger/dagger/pom.properties'
+    exclude 'META-INF/maven/com.google.dagger/dagger/pom.xml'
+    
+    relocate 'javax.inject', 'orchextra.javax.inject'
+    relocate 'dagger', 'orchextra.dagger'
+
     baseName = 'dagger'
     classifier = ''
 }
+
+tasks.jar.enabled = false
 
 apply plugin: 'maven'
 
 //THIS WAS THE KEY::
 [build, install]*.dependsOn shadowJar
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives javadocJar
-}
