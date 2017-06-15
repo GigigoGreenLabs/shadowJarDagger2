@@ -12,10 +12,10 @@ dependencies {
 import com.github.jengelman.gradle.plugins.shadow.transformers.ServiceFileTransformer
 
 shadowJar {
-    relocate 'javax', 'orchextra.javax'
     relocate 'dagger', 'orchextra.dagger'
-    relocate 'org', 'orchextra.org'
-    relocate 'com', 'orchextra.com'
+    relocate 'javax.inject', 'orchextra.javax.inject'
+    relocate 'dagger-producers', 'orchextra.dagger-producers'
+    relocate 'guava', 'orchextra.guava'
 
     transform(ServiceFileTransformer)
     baseName = 'dagger-compiler'
