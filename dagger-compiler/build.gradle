@@ -6,7 +6,7 @@ plugins {
 apply plugin: 'com.github.johnrengelman.shadow'
 
 dependencies {
-    compile 'com.google.dagger:dagger-compiler:2.9'
+    compile 'com.google.dagger:dagger-compiler:2.7'
 }
 
 import com.github.jengelman.gradle.plugins.shadow.transformers.ServiceFileTransformer

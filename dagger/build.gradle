@@ -9,7 +9,7 @@ apply plugin: 'java'
 apply plugin: 'com.github.johnrengelman.shadow'
 
 dependencies {
-    compile 'com.google.dagger:dagger:2.9'
+    compile 'com.google.dagger:dagger:2.7'
 }
 
 shadowJar {
